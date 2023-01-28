@@ -1,0 +1,42 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    int l1;
+    int l2;
+    TreeNode parent1;
+    TreeNode parent2;
+    public boolean isCousins(TreeNode root, int x, int y) {
+       func(root,x,y,0,null);
+        return l1 == l2 && parent1!= parent2;
+    }
+    public void func(TreeNode root, int x, int y, int level,TreeNode parent){
+        if(root == null){
+            return;
+        }
+        if(root.val == x){
+            l1 = level;
+            parent1 = parent;
+        }
+        if(root.val == y){
+            l2= level;
+            parent2= parent;
+        }
+        ++level;
+        func(root.left,x,y,level,root);
+        func(root.right,x,y,level,root);
+    }
+    
+}
