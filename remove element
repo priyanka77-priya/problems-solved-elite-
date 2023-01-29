@@ -1,0 +1,11 @@
+for _ in range(int(input())):
+    n,k = map(int,input().split())
+    arr=list(map(int,input().split()))
+    d=max(arr)
+    e=min(arr)
+    if n==1:
+        print("YES")
+    elif d>k:
+        print("YES")
+    else:
+        print("NO")
